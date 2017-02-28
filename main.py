@@ -17,9 +17,5 @@ for subdir, dirs, files in os.walk(rootdir):
         # Check if they are images
         for extension in extensions:
             if extension in f:
-                try:
-                    detected = fd.detect(os.path.join(subdir, f))
-                    os.remove(os.path.join(subdir, f))
-                except:
-                    print("Error on file" + os.path.join(subdir, f) + " removing...")
-                    os.remove(os.path.join(subdir, f))
+                detected = fd.detect(os.path.join(subdir, f))
+                os.remove(os.path.join(subdir, f))
