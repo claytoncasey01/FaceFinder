@@ -2,7 +2,7 @@ from FaceDetector import FaceDetector
 import sys
 import os
 
-#Get directory to search
+# Get directory to search
 rootdir = sys.argv[1]
 fd = FaceDetector()
 
@@ -16,10 +16,8 @@ for subdir, dirs, files in os.walk(rootdir):
 
             try:
                 detected = fd.detect(os.path.join(subdir, f))
-            except:
-                print("Error on file" + os.path.join(subdir, f) + " removing...")
                 os.remove(os.path.join(subdir, f))
 
-            # If we don't detect a face, remove the file
-            if not detected:
+            except:
+                print("Error on file" + os.path.join(subdir, f) + " removing...")
                 os.remove(os.path.join(subdir, f))
