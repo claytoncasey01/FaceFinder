@@ -8,6 +8,7 @@ fd = FaceDetector()
 
 extract = False
 
+
 # Check to see if a second argument
 # was entered, if so see if it was
 # the extract flag

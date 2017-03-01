@@ -37,3 +37,25 @@ class FaceDetector:
             cv2.imwrite(face_file_name, sub_face)
 
         return
+
+    def match_faces(self, path, template, threshold=0.60):
+        matched = False
+        img = cv2.imread(path, 0)
+        template = cv2.imread(template, 0)
+        w, h = template.shape[::-1]
+        method = cv2.TM_CCOEFF_NORMED
+
+        # Apply template matching
+        res = cv2.matchTemplate(img, template, method)
+
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+
+        # Check if our max value is >=
+        # the threshold passed in(default of .60)
+        if max_val >= threshold:
+            matched = True
+
+        return matched
+
+
+
