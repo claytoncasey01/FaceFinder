@@ -4,13 +4,13 @@ import cv2
 class FaceDetector:
 
     # Searches for face in image
-    def detect(self, path, extract):
+    def detect(self, path, extract, haar):
 
         # Attempt to read the image and find
         # the faces.
         try:
             img = cv2.imread(path)
-            cascade = cv2.CascadeClassifier("/home/casey/Projects/FaceFinder/haarcascade_frontalface_alt.xml")
+            cascade = cv2.CascadeClassifier(haar)
             faces = cascade.detectMultiScale(img, 1.3, 4, cv2.CASCADE_SCALE_IMAGE, (20, 20))
 
             # If extract flag was passed in
