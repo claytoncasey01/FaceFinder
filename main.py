@@ -5,7 +5,7 @@ import os
 # Create our arg parser and parse arguments
 ap = argparse.ArgumentParser()
 
-ap.add_argument("-d", "--root-dir", required=True,
+ap.add_argument("-rd", "--root-dir", required=True,
                 help="Root directory to begin searching. Will go through all subdirectories searching for images")
 ap.add_argument("-e", action="store_true", required=False,
                 help="Detect and extract faces from images all in one go.")
@@ -13,7 +13,7 @@ ap.add_argument("-e", action="store_true", required=False,
 args = vars(ap.parse_args())
 
 # Get directory to search
-rootdir = args["root-dir"]
+rootdir = args["root_dir"]
 fd = FaceDetector()
 
 # List of extensions so search for
